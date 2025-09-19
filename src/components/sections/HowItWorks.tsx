@@ -21,6 +21,7 @@ export default function HowItWorks() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)
   const currentStageRef = useRef<number>(0)
+  const lastChangeTimeRef = useRef<number>(0)
 
 
   // Content data for three stages
@@ -90,6 +91,11 @@ export default function HowItWorks() {
       const changeMedia = (stage: number) => {
         if (!videoRef.current || !imageRef.current || currentStageRef.current === stage) return
         
+        // Throttle media changes to prevent rapid switching on fast scroll
+        const now = Date.now()
+        if (now - lastChangeTimeRef.current < 300) return // 300ms throttle
+        lastChangeTimeRef.current = now
+        
         console.log(`Changing to stage ${stage}`) // Debug log
         currentStageRef.current = stage
         
@@ -144,10 +150,11 @@ export default function HowItWorks() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=3000", // 3 transitions * 1000px each (slower)
-          scrub: 1,
+          end: "+=4000", // Longer scroll distance for smoother experience
+          scrub: 2, // Increased scrub value for smoother, less direct scrolling
           pin: true,
           pinSpacing: true,
+          anticipatePin: 1, // Helps with smooth pinning on fast scroll devices
           onUpdate: (self) => {
             // Handle media changes based on progress - when content starts showing
             const progress = self.progress
@@ -196,7 +203,7 @@ export default function HowItWorks() {
 
   return (
     <>
-    <section ref={containerRef} className="h-screen bg-[#020617] relative overflow-hidden pt-[50px]">
+    <section ref={containerRef} className="h-screen bg-[#020617] relative overflow-hidden pt-[50px]" style={{scrollBehavior: 'smooth'}}>
 
       <Container size="content" className="relative z-10">
         {/* Header Section */}

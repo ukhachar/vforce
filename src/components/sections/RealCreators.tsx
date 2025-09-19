@@ -93,11 +93,12 @@ export default function RealCreators() {
       gsap.to(titleRef.current, {
         y: -120, // Move title higher up
         ease: "none",
+        force3D: true, // Force hardware acceleration for Safari
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: 0.5
+          scrub: 1.5 // Slower scrub for Safari compatibility
         }
       })
 
@@ -109,16 +110,19 @@ export default function RealCreators() {
         gsap.fromTo(card,
           {
             y: 200, // Start from bottom
+            opacity: 0.8
           },
           {
             y: 0, // Move to original position
+            opacity: 1,
             ease: "none",
+            force3D: true, // Force hardware acceleration for Safari
             delay: index * 0.1, // Slight stagger based on card index
             scrollTrigger: {
               trigger: sectionRef.current,
               start: "top 80%",
               end: "bottom 20%",
-              scrub: 1, // Tied to scroll position
+              scrub: 2, // Slower scrub for better Safari performance
             }
           }
         )
