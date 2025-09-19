@@ -140,7 +140,7 @@ export default function HeroSection() {
                       alt="VideoFusion Dashboard on iPad"
                       width={570}
                       height={392}
-                      className="w-auto h-auto object-contain"
+                      className="w-full h-auto object-contain min-w-[450px] max-w-[700px] lg:max-w-[600px] xl:max-w-[700px]"
                       priority
                     />
                     
