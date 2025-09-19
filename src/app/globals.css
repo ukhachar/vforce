@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #020617;
+  --foreground: #ffffff;
+  --home-gradient: linear-gradient(90deg, #04F 0%, #E7417E 34.62%, #E27333 66.83%, #E54D6A 100%);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'SF Pro Display', 'Montserrat', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../../public/fonts/SF-Pro-Display-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../../public/fonts/SF-Pro-Display-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../../public/fonts/SF-Pro-Display-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../../public/fonts/SF-Pro-Display-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+.b-home-gradient {
+  border-radius: 30px;
+  border: 2px solid var(--home-gradient, #04F);
+}
+.bg-gradient-ipadmini::after {
+  background-image: url('/images/herobg.png');
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  background-size: cover;
+  z-index:0;
+}
+.scroll-bar-div {
+  background: linear-gradient(180deg, rgba(22, 13, 29, 0.00) 0%, rgba(8, 8, 25, 0.70) 54.33%, #020617 100%);
+  z-index:1;
+  cursor: pointer;
+  position: relative;
+}
+.wave_pattern {
+  position: relative;
+}
+
+.wave_pattern:before {
+  content: "";
+  background-image: url('/images/wave_pattern.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 100%;
+  max-height: 600px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom:180px;
+  pointer-events: none;
+  background-size: cover;
+  z-index:0;
+}
+.wave_pattern_revert:before {
+  content: "";
+  background-image: url('/images/wave_pattern_revert.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 100%;
+  max-height:472px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom:0px;
+  pointer-events: none;
+  background-size: cover;
+}
+
+/* Real Creators Cards - Outer div (gradient background) */
+.creator-card {
+  border-radius: 40px;
+}
+
+/* Card 1 - Large TIRE AGENT */
+#card-1 {
+  width: 370px;
+  height: 353px;
+  border: 2px solid var(--Home-Gradient,#0044FF);
+}
+
+/* Card 2 - Small TIRE AGENT */
+#card-2 {
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--Home-Gradient,#E7417E);
+}
+
+/* Card 3 - Large DIG INN */
+#card-3 {
+  width: 370px;
+  height: 353px;
+  border: 2px solid var(--Home-Gradient,#E27333);
+  }
+
+/* Card 4 - Large TIRE AGENT Signups */
+#card-4 {
+  width: 370px;
+  height: 353px;
+  border: 2px solid var(--Home-Gradient,#E54D6A);
+  }
+
+/* Card 5 - Small Content Repurposed */
+#card-5 {
+  width: 170px;
+  height: 170px;
+  border: 2px solid var(--Home-Gradient,#0044FF);
+  }
+
+/* Inner div (dark background) */
+.creator-card-inner {
+  width: 100%;
+  height: 100%;
+  border-radius:40px;
+  backdrop-filter: blur(20px);
+  padding:40px;
+  display: flex;
+  flex-direction: column;
+}
+.realcreatorbg:before {bottom: auto;top:242px;}
